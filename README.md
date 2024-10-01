@@ -2,6 +2,8 @@
 
 # Problem
 
+Currently there is uncertainty in the prediction of post-graduation salaries from the Farmer School of Business. This is because of little understanding in which variables are significant, a continuous flow of data with no streamlined analysis process, and a struggle to create insight with these data sets. Addressing these points would allow for a more efficient process in data analysis that would benefit FSB's brand and opportunities.
+
 # Objective
 
 Our objective is to provide the Farmer School of Business (FSB) with a comprehensive data analysis solution that helps improve their rankings, strengthen brand positioning, and enhance overall student outcomes. The primary focus is on developing a clean, understandable dataset that accurately reflects post-college success metrics, such as job placement and salary data.
