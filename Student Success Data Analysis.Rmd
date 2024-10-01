@@ -1,0 +1,23 @@
+---
+title: Student Success Data Analysis
+author: Cameron Coats, Ritika Chatterjee, Nick Oakley
+output:
+  html_document:
+    code_folding: show
+    df_print: paged
+    number_sections: yes
+    theme: readable
+    toc: yes
+    toc_depth: 2
+    number_selections: yes
+    toc_float:
+      colapsed: no
+    code_download: yes
+  word_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
