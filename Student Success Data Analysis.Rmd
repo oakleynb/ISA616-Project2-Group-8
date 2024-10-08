@@ -21,3 +21,65 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+# Business Value Proposition
+
+## Descriptive Summary
+
+### Define the client or audience for your data analysis solution. 
+
+Kirk Bogard / FSB (Farmer School of Business)
+Kirk Bogard is responsible for leading a team of dedicated professionals focused on the marketing and communications for the Farmer School of Business. His responsibilities include career and professional development programming for students, alumni engagement, corporate relations, and event management.
+
+### Define the client jobs.  What jobs are your clients trying to get done?  Use a separate bullet point for each job you intend to help your client get done.  
+
+* Increase School Reputation/Prestige: Enhance FSB’s public perception by showcasing successful student outcomes.
+* Improve Communication with Stakeholders: Effectively communicate FSB’s successes to prospective students, parents, alumni, and corporate partners.
+Support Career Development: Provide data to influence programming and ensure alignment with industry expectations.
+* Attract Employers: Use data to demonstrate FSB graduates' preparedness and competence to potential recruiters.
+* Drive Data-Informed Decisions: Leverage data to influence decisions about curriculum, programming, and marketing strategies.
+
+### Add pains. What are the pains before, during, and after your client is trying to get their jobs done?  Create a bullet point for every specific pain.
+
+**Before:**
+Uncertainty on which date points to prioritize and which metrics reflect the most insights
+Uncertainty on how to present the data in a way that positively impacts FSB’s reputation
+
+**During:**
+Difficulty benchmarking FSB’s performance against other business schools due to data availability
+Struggles to translate data into meaningful insights that demonstrate the value and success of FSB programs
+
+**After:**
+Need for continuous data collection and updates to ensure information remains relevant and updated 
+Responding to stakeholder feedback and adapting strategies based on student/employer concerns
+Difficulty in maintaining engagement of stakeholders once initial data and reports have been shared
+
+### Describe your intended solution. Give a bullet point for each major element of your product or solution.
+
+* Develop an interactive dashboard that consolidates key metrics and allows FSB to access and present real-time data to stakeholders
+* Provide a comparative analysis that benchmarks FSB’s performance against competitor institutions, helping to identify strengths and areas of improvement in program offerings
+* Establish feedback loop with stakeholders to continuously refine data collection, reporting, and communication processes
+
+### What are the painkillers from your solution? You should be able to map a pain killer to a client's pain.
+
+* Prioritizing certain variables that provide valuable insight, allowing users to make new predictions to benefit FSB
+* Providing structured and complete data, and setting up the path for data analysis and value proposition
+* Identifying key metrics that signify the importance and success of FSB’s majors and programs, which can be used for external marketing
+
+### Add gains. What else might your solution deliver that will surprise or benefit your client above and beyond simply killing their pain?
+
+* Provide valuable insights into which variables are strong predictors of post-college success, helping FSB optimize program offerings and improve graduate outcomes.
+* Enable data-driven decision-making that directly improves FSB’s ability to meet student and employer expectations.
+
+### What are the gain creators? You should be able to map a gain creator to a client gain.
+
+* Aggregating data from multiple sources ensures a comprehensive view of student success metrics.
+* Help FSB better understand which dataset predictors are most impactful for student success, guiding future program adjustments.
+* The solution will streamline ongoing data collection, ensuring consistent and up-to-date information for long-term use.
+
+## BVP Diagram
+
+```{r}
+knitr::include_graphics("./Business Value Proposition.png")
+```
+
