@@ -83,3 +83,30 @@ Difficulty in maintaining engagement of stakeholders once initial data and repor
 knitr::include_graphics("./Business Value Proposition.png")
 ```
 
+# Data Cleaning
+
+## Importing Libraries and Load Dataset
+
+```{r}
+# Loading necessary libraries for data analysis and visualization
+library(tidyverse)  # Includes ggplot2, dplyr, and other useful packages for data analysis
+library(readr)      # For reading CSV files
+library(ggplot2)    # For plotting
+
+# Reading the dataset from a CSV file
+df <- read_csv('C:/Users/nicko/Downloads/SS_2019_2021.csv')
+
+# Displaying the first few rows of the dataset
+head(df)
+```
+
+We use read_csv from the readr package in R to read the CSV  file. The tidyverse package contains many useful functions for data manipulation and visualization.
+
+## Check Dataset Length
+
+```{r}
+# Checking the total number of rows in the dataframe
+nrow(df)
+```
+
+This step helps us understand the size of the datset and ensure that all data has been successfully loaded.
