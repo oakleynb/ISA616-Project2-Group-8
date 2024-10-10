@@ -208,3 +208,10 @@ summary(df)
 
 This cell uses the built-in summary() function in R to display key summary statistics for each variable in the dataset. For numerical variables, it provides values such as the minimum, maximum, mean, median, and quartiles, offering insight into the data distribution. For categorical variables, it shows the class, mode, and frequency of the most common values. This is the final step in the data cleaning and preprocessing process because it allows us to verify the integrity of the data, ensuring there are no unexpected outliers or data distribution issues. It also confirms that missing values have been handled appropriately and that the dataset is now clean, well-structured, and ready for further analysis or modeling.
 
+## Export Clean Data
+
+```{r}
+write.csv(df, "clean_student_success_data.csv")
+```
+
+This exports our cleaned data into a new csv file that will be used for our analysis in the dashboard.
