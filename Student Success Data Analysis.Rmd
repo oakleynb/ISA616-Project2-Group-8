@@ -102,7 +102,7 @@ library(readr)      # For reading CSV files
 library(ggplot2)    # For plotting
 
 # Reading the dataset from a CSV file
-df <- read_csv('C:/Users/nicko/Downloads/SS_2019_2021.csv')
+df <- read_csv('./SS_2019_2021.csv')
 
 # Displaying the first few rows of the dataset
 head(df)
@@ -184,11 +184,28 @@ print(correlation_with_salary)
 
 This code calculates the correlation between the survey_salary variable and all other numerical variables in the dataset. It then sorts the correlation values in descending order and prints them, allowing us to see which variables are most strongly correlated with survey_salary.
 
+## Creating New Double Major Variable
+
+```{r}
+# Creates new variable
+df$double_major <- "No Double Major"
+
+# Checks for double major, then replaces values if student is a double major
+for (i in 1:nrow(df)) {
+  if (df$major2[i] != "none") {
+    df$double_major[i] <- "Double Major"
+  }
+}
+```
+
+This step creates a new variable called **double_major**, which initially gives every student the label of "No Double Major". Then, it runs through the data frame, and checks if the student has a second major. If they do, this value is changed to "Double Major". This new variable allows us to slice our responce variables by whether or not a student has a second major.
+
+
 ## Further Dropping Variables
 
 ```{r}
 # Dropping specified columns in R
-df <- df %>% select(-`Cum Laude`, -`Magna Cum Laude`, -`Summa Cum Laude`,
+df <- df %>% select(-`major2`, -`Cum Laude`, -`Magna Cum Laude`, -`Summa Cum Laude`,
                     -`survey_internone`, -`survey_interntwo`,
                     -`survey_internthree`, -`survey_internfour`, -`survey_state`)
 ```
