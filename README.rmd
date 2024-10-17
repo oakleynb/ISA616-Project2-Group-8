@@ -16,3 +16,10 @@ Our solutions are as follows
 
 
 We plan to implement the following solutions by cleaning our data for use, this includes recoding, measuring the importance of, and preforming analysis of variables in R_Studio.
+
+# Zip Folder Contents
+
+* SS_2019_2021.csv                  Origonal Dataset
+* clean_student_success_data.csv    Clean Dataset
+* Business Value Proposition.png    BVP diagram
+*
