@@ -20,10 +20,11 @@ We plan to implement the following solutions by cleaning our data for use, this 
 https://github.com/oakleynb/ISA616-Project2-Group-8
 # Zip Folder Contents
 //Dashboard Final Submission
-* SS_2019_2021.csv                  Origonal Dataset
-* clean_student_success_data.csv    Clean Dataset
-* Business Value Proposition.png    BVP diagram
-* Student Success Data Analysis.Rmd R code & Documentation
-* HTML File
+* SS_2019_2021.csv                            Origonal Dataset
+* clean_student_success_data.csv              Clean Dataset
+* Business Value Proposition.png              BVP diagram
+* Student Success Data Analysis.Rmd           R code & Documentation
+* ISA 616-FSB-Student-Success-Dashboard.html  HTML File for template
+* Student Success Data Analysis.html          HTML File for cleaning
 //Project submission add
 
