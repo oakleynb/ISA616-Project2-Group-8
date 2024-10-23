@@ -1,0 +1,184 @@
+---
+title: "FSB Student Success Dashboard 2024"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+---
+
+```{r setup, include=FALSE,echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE,message=FALSE,warning=FALSE)
+
+#package initialization
+
+if(require(pacman)==FALSE) install.packages("pacman")
+pacman::p_load(tidyverse, #for data manipulation
+               plotly, #for interactive plots
+               flexdashboard, #to make a dashboard
+               fontawesome, #for icons
+               DT #for better tables
+               )
+
+#read in data
+
+SSraw=read_csv("~/Downloads/clean_student_success_data.csv")
+```
+
+# Question Overview{data-orientation="columns"}
+
+#### Questions
+
+In this analysis, we aim to explore several key questions using data from FSB (Farmer School of Business) graduates. First, we will break post-graduation salaries of FSB graduates down by major to understand how salaries vary across different fields of study within FSB. Additionally, we will examine the percentage of graduates within each GPA Range who receive job offers immediately after college, offering a view into employment rates by performance.
+
+Beyond major-specific salary and employment data, we will investigate the impact of academic honors on starting salary, determining whether being in an honors program leads to a significant salary premium upon graduation. Finally, we will analyze whether students who pursue a double major have higher starting salaries compared to those who graduate with only one major. This comprehensive analysis will help illuminate the factors that influence starting salary and employment outcomes for FSB graduates, including field of study, academic achievements, and breadth of educational background (single vs. double majors).
+
+
+# Salary Overview {data-orientation="columns"}
+
+Overview of Salary Expectations broken down by Various Predictors
+
+## row {data-width="600"}
+
+### Comparative Salary by Major
+
+We will further break down post-graduation salaries of FSB graduates by major to understand how salaries vary across different fields of study within FSB.
+
+
+```{r echo=FALSE}
+library(dplyr)
+library(ggplot2)
+
+# Ensure survey_salary is numeric
+SSraw$survey_salary <- as.numeric(SSraw$survey_salary)
+
+# Group by major and calculate the mean salary for each major
+salary_by_major <- SSraw %>%
+  group_by(major1) %>%
+  summarise(mean_salary = mean(survey_salary, na.rm = TRUE)) %>%
+  filter(!is.na(mean_salary))  # Remove majors with no salary data
+
+# Create a bar chart for salary by major
+ggplot(salary_by_major, aes(x = reorder(major1, mean_salary), y = mean_salary)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  xlab("Major") +
+  ylab("Average Salary") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  coord_flip()
+```
+
+### Comparative Salary by Double Major
+
+Lastly, we will analyze whether students who pursue a double major have higher starting salaries compared to those who graduate with only one major.
+
+
+```{r, echo=FALSE}
+# Group by number of majors and calculate the mean salary for each group
+salary_by_double_major <- SSraw %>%
+  group_by(double_major) %>%
+  summarise(mean_salary = mean(survey_salary, na.rm = TRUE)) %>%
+  filter(!is.na(mean_salary))  # Remove majors with no salary data
+
+# Create a bar chart for salary by major
+ggplot(salary_by_double_major, aes(x = reorder(double_major, mean_salary), y = mean_salary)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  xlab("Double Major") +
+  ylab("Average Salary") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  coord_flip()
+```
+
+### Salary by Honors Placement
+
+Beyond major-specific salary and employment data, we will investigate the impact of academic honors on starting salary, determining whether being in an honors program leads to a significant salary premium upon graduation.
+
+
+```{r,echo=FALSE}
+library(ggplot2)
+library(dplyr)
+
+# Replace 0 with "No Honors" in the latin_honors column
+SSraw <- SSraw %>%
+  mutate(latin_honors = ifelse(latin_honors == "0", "No Honors", latin_honors))
+
+# Create the plot directly with stat_summary
+ggplot(SSraw, aes(x = latin_honors, y = survey_salary, fill = latin_honors)) + 
+  stat_summary(fun = mean, geom = "bar", position = "dodge") +
+  labs(title = "Average Survey Salary by Latin Honors",
+       x = "Latin Honors",
+       y = "Average Salary") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## row {data-height="600"}
+
+
+# Post Graduation Employment {data-orientation="columns"}
+
+## row {data=width="400"}
+
+### Post-Grad Employment Rate by GPA Range
+
+We will examine the percentage of graduates within each GPA Range who receive job offers immediately after college, offering a view into employment rates by discipline.
+
+
+```{r,echo=FALSE}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+
+# Create a new column for employment status
+df <- SSraw %>%
+  mutate(employment_status = ifelse(survey_plans %in% c("accepted fulltime job", "self employed", "military service"), 1, 0))
+
+# Calculate the employment rate for each number of majors
+employment_rate <- df %>%
+  group_by(GPA.Range) %>%
+  summarise(rate = mean(employment_status) * 100)  # Calculate percentage of employed
+
+# Create the plot
+ggplot(employment_rate, aes(x = factor(GPA.Range), y = rate, fill = factor(GPA.Range))) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.4) +
+  labs(title = "Post-Grad Employment Rate by  GPA Range",
+       x = "GPA Range",
+       y = "Employment Rate (%)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_brewer(palette = "Set2")  # Optional color palette
+```
+
+
+### Post-Grad Employment Rate by Number of Majors
+
+Lastly, we will analyze the percentage of graduates who secured job offers immediately after college, comparing those who pursued a single major to those who pursued double majors.
+
+
+```{r,echo=FALSE}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+
+# Create a new column for employment status
+df <- SSraw %>%
+  mutate(employment_status = ifelse(survey_plans %in% c("accepted fulltime job", "self employed", "military service"), 1, 0))
+
+# Calculate the employment rate for each number of majors
+employment_rate <- df %>%
+  group_by(nmajor) %>%
+  summarise(rate = mean(employment_status) * 100)  # Calculate percentage of employed
+
+# Create the plot
+ggplot(employment_rate, aes(x = factor(nmajor), y = rate, fill = factor(nmajor))) +
+  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
+  labs(title = "Post-Grad Employment Rate by Number of Majors",
+       x = "Number of Majors",
+       y = "Employment Rate (%)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_brewer(palette = "Set2")  # Optional color palette
+```
+
+## row {data-height="500"}
+
+
