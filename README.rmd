@@ -16,7 +16,8 @@ Our solutions are as follows
 
 
 We plan to implement the following solutions by cleaning our data for use, this includes recoding, measuring the importance of, and preforming analysis of variables in R_Studio.
-
+# Github Link
+https://github.com/oakleynb/ISA616-Project2-Group-8
 # Zip Folder Contents
 //Dashboard Final Submission
 * SS_2019_2021.csv                  Origonal Dataset
@@ -25,4 +26,4 @@ We plan to implement the following solutions by cleaning our data for use, this 
 * Student Success Data Analysis.Rmd R code & Documentation
 * HTML File
 //Project submission add
-* Link to Github
+
